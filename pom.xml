@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>at.winterer.tycho</groupId>
+	<artifactId>tycho-example-pomless</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>plugin1</module>
+	</modules>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<tycho-version>1.0.0</tycho-version>
+		<tycho-extras-version>1.0.0</tycho-extras-version>
+		
+		<unleash-maven-version>2.7.3</unleash-maven-version>
+		<unleash-scm-provider-git>2.1.0</unleash-scm-provider-git>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>eclipse-indigo</id>
+			<url>http://download.eclipse.org/releases/oxygen</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Unleash plugin for automated releases -->
+				<plugin>
+					<groupId>com.itemis.maven.plugins</groupId>
+					<artifactId>unleash-maven-plugin</artifactId>
+					<version>${unleash-maven-version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.itemis.maven.plugins</groupId>
+							<artifactId>unleash-scm-provider-git</artifactId>
+							<version>${unleash-scm-provider-git}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<scm>
+		<url>https://github.com/winterer/tycho-example-pomless</url>
+		<connection>scm:git:git://github.com/winterer/tycho-example-pomless.git</connection>
+		<developerConnection>scm:git:git@github.com:winterer/tycho-example-pomless.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+</project>
