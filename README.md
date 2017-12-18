@@ -1,1 +1,76 @@
 # tycho-example-pomless
+
+This example is a simple multi-module POM-less tycho project with one plugin.
+
+Releasing this maven/tycho project with the [unleash-maven-plugin](https://github.com/shillner/unleash-maven-plugin), goal `unleash:perform-tycho` fails with the error:
+
+```
+...
+[INFO] 20:25:15,142  Checking aether for already released artifacts of modules that are scheduled for release.
+[INFO] 20:25:15,172  Updating project modules with release versions (POM and MANIFEST versions)
+[ERROR] An exception was caught while processing the workflow step with id 'setReleaseVersionsTycho'.
+org.apache.maven.plugin.MojoExecutionException: Error during tycho version upgrade.
+    at com.itemis.maven.plugins.unleash.steps.actions.tycho.AbstractTychoVersionsStep.execute (AbstractTychoVersionsStep.java:84)
+    at com.itemis.maven.plugins.unleash.steps.actions.tycho.SetReleaseVersionsTycho.execute (SetReleaseVersionsTycho.java:30)
+    at com.itemis.maven.plugins.cdi.internal.util.workflow.WorkflowExecutor.executeSequentialWorkflowStep (WorkflowExecutor.java:157)
+    at com.itemis.maven.plugins.cdi.internal.util.workflow.WorkflowExecutor.execute (WorkflowExecutor.java:119)
+    at com.itemis.maven.plugins.cdi.AbstractCDIMojo.execute (AbstractCDIMojo.java:209)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:134)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:208)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:154)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:146)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:117)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:81)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:51)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:128)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:309)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:194)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:107)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:955)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:290)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:194)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:498)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:289)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:229)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:415)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:356)
+Caused by: java.io.FileNotFoundException: C:\projects\tycho\examples\tycho-example-pomless\plugin1\pom.xml (The system cannot find the file specified)
+    at java.io.FileInputStream.open0 (Native Method)
+    at java.io.FileInputStream.open (FileInputStream.java:195)
+    at java.io.FileInputStream.<init> (FileInputStream.java:138)
+    at org.eclipse.tycho.versions.pom.MutablePomFile.read (MutablePomFile.java:66)
+    at org.eclipse.tycho.versions.engine.ProjectMetadataReader.addBasedir (ProjectMetadataReader.java:63)
+    at org.eclipse.tycho.versions.engine.ProjectMetadataReader.addBasedir (ProjectMetadataReader.java:69)
+    at com.itemis.maven.plugins.unleash.steps.actions.tycho.AbstractTychoVersionsStep.execute (AbstractTychoVersionsStep.java:64)
+    at com.itemis.maven.plugins.unleash.steps.actions.tycho.SetReleaseVersionsTycho.execute (SetReleaseVersionsTycho.java:30)
+    at com.itemis.maven.plugins.cdi.internal.util.workflow.WorkflowExecutor.executeSequentialWorkflowStep (WorkflowExecutor.java:157)
+    at com.itemis.maven.plugins.cdi.internal.util.workflow.WorkflowExecutor.execute (WorkflowExecutor.java:119)
+    at com.itemis.maven.plugins.cdi.AbstractCDIMojo.execute (AbstractCDIMojo.java:209)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:134)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:208)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:154)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:146)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:117)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:81)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:51)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:128)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:309)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:194)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:107)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:955)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:290)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:194)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:498)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:289)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:229)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:415)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:356)
+[INFO] Rolling back after execution errors - please find the error messages and stack traces above.
+[INFO] 20:25:15,232  Rollback of all version changes necessary for the release (POMs, MANIFESTs, ...).
+```
