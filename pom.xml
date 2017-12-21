@@ -3,7 +3,7 @@
 
 	<groupId>at.winterer.tycho</groupId>
 	<artifactId>tycho-example-pomless</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.3</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -65,6 +65,6 @@
 		<url>https://github.com/winterer/elevator</url>
 		<connection>scm:git:https://github.com/winterer/tycho-example-pomless.git</connection>
 		<developerConnection>scm:git:https://github.com/winterer/tycho-example-pomless.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>0.0.3</tag>
 	</scm>
 </project>
