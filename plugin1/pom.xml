@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
->>>>>>> added POMs
-=======
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
->>>>>>> 0a77aca3cb6a6992c3e7c5f71047a5c40b8bdada
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>plugin1</artifactId>
@@ -17,14 +7,6 @@
 	<parent>
 		<groupId>at.winterer.tycho</groupId>
 		<artifactId>tycho-example-pomless</artifactId>
-<<<<<<< HEAD
-<<<<<<< HEAD
 		<version>0.0.4-SNAPSHOT</version>
-=======
-		<version>0.0.1-SNAPSHOT</version>
->>>>>>> added POMs
-=======
-		<version>0.0.4-SNAPSHOT</version>
->>>>>>> 0a77aca3cb6a6992c3e7c5f71047a5c40b8bdada
 	</parent>
 </project>
