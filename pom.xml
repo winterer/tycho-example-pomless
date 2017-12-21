@@ -3,7 +3,7 @@
 
 	<groupId>at.winterer.tycho</groupId>
 	<artifactId>tycho-example-pomless</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
