@@ -8,6 +8,8 @@
 
 	<modules>
 		<module>plugin1</module>
+		<module>feature1</module>
+		<module>update</module>
 	</modules>
 
 	<properties>
@@ -18,7 +20,7 @@
 		<tycho-version>1.0.0</tycho-version>
 		<tycho-extras-version>1.0.0</tycho-extras-version>
 		
-		<unleash-maven-version>2.7.3</unleash-maven-version>
+		<unleash-maven-version>2.7.4</unleash-maven-version>
 		<unleash-scm-provider-git>2.1.0</unleash-scm-provider-git>
 	</properties>
 
